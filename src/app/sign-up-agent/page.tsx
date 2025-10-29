@@ -89,8 +89,13 @@ export default function SignUpAgent() {
 
     return (
         <div className="w-full h-screen flex">
-            <div className="hidden lg:block lg:w-[50%] xl:w-[60%] 2xl:w-[70%] h-full bg-[url(/sign-up-images/stage.png)] bg-cover bg-center" />
+            {/* <div className="hidden lg:block lg:w-[50%] xl:w-[60%] 2xl:w-[70%] h-full bg-[url(/sign-up-images/stage.png)] bg-cover 
+            bg-center" /> */}
+            {/* The above will cause hydration error. The below is OK. */}
 
+            <div className="hidden lg:block lg:w-[50%] xl:w-[60%] 2xl:w-[70%] h-full relative">
+                <Image src="/sign-up-images/stage.png" alt="background" fill className="object-cover object-center" />
+            </div>
             {/* Form */}
             <div className="w-full lg:w-[50%] xl:w-[40%] 2xl:w-[30%] h-full flex items-center justify-center bg-white">
                 <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
@@ -113,7 +118,7 @@ export default function SignUpAgent() {
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-8">
+                    <div className="w-full grid gap-3 items-center mt-6">
                         <label htmlFor="emailAddress" className="font-inter text-sm">Email Address</label>
                         <Input type="text" id="emailAddress" placeholder="Enter Your email "
                             className="font-inter bg-[#F2F2F2]" {...register("emailAddress")} />
@@ -122,7 +127,7 @@ export default function SignUpAgent() {
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-8">
+                    <div className="w-full grid gap-3 items-center mt-6">
                         <label htmlFor="countryOrCity" className="font-inter text-sm">Country / City</label>
                         <Input type="text" id="countryOrCity" placeholder="Enter Your country/city"
                             className="font-inter bg-[#F2F2F2]" {...register("countryOrCity")} />
@@ -131,7 +136,7 @@ export default function SignUpAgent() {
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-8">
+                    <div className="w-full grid gap-3 items-center mt-6">
                         <label htmlFor="experience" className="font-inter text-sm">Experience</label>
                         <Input type="number" id="experience" placeholder="Enter Your experience duration"
                             className="font-inter bg-[#F2F2F2]" {...register("experience", { valueAsNumber: true })} />
@@ -140,7 +145,7 @@ export default function SignUpAgent() {
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-4">
+                    <div className="w-full grid gap-3 items-center mt-6">
                         <label htmlFor="password" className="text-[#333333] font-inter text-sm">Password</label>
                         <div className="relative w-full">
                             <Input
@@ -165,7 +170,7 @@ export default function SignUpAgent() {
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-4">
+                    <div className="w-full grid gap-3 items-center mt-6">
                         <label htmlFor="confirmPassword" className="text-[#000000] font-inter text-sm">
                             Confirm Password</label>
                         <div className="relative w-full">
@@ -199,7 +204,7 @@ export default function SignUpAgent() {
                         </Button>
                     </div>
 
-                    <div className="flex items-center justify-center gap-2 text-sm pt-6">
+                    <div className="flex items-center justify-center gap-2 text-sm mt-6">
                         <p className="text-[#000000] font-inter">Already have an account?</p>
                         <Link href="/sign-in" className="text-blue-700 font-inter font-sm">
                             Sign In</Link>

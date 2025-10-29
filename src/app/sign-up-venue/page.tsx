@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const registrationSchema = z.object({
-    fullNameOrCompanyName: z
+    venueName: z
         .string()
         .min(1, "Name must be at least 1 characters")
         .max(100, "Name must not exceed 100 characters")
@@ -23,16 +23,22 @@ const registrationSchema = z.object({
         .toLowerCase()
         .trim(),
 
-    countryOrCity: z
+    typeOfVenue: z
         .string()
-        .min(2, "Country is required")
+        .min(1, "Name must be at least 1 character")
+        .max(100, "Name must not exceed 20 characters")
         .trim(),
 
-    experience: z
+    venueCapacity: z
         .number()
-        .int("Experience must be a whole number")
-        .min(0, "Experience cannot be negative")
-        .max(50, "Experience seems too high"),
+        .int("Venue Capacity must be a whole number")
+        .min(0, "Venue Capacity cannot be negative")
+        .max(500, "Venue Capacity seems too high"),
+
+    countryOrCity: z
+        .string()
+        .min(1, "Country name must be 1 character")
+        .trim(),
 
     password: z
         .string()
@@ -52,7 +58,7 @@ const registrationSchema = z.object({
 // Type inference from schema
 type RegistrationFormData = z.infer<typeof registrationSchema>;
 
-export default function SignUpAgent() {
+export default function SignUpVenue() {
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const router = useRouter();
@@ -66,10 +72,11 @@ export default function SignUpAgent() {
         resolver: zodResolver(registrationSchema),
         mode: "onChange", // Add this for immediate validation
         defaultValues: {
-            fullNameOrCompanyName: "",
+            venueName: "",
             emailAddress: "",
+            typeOfVenue: "",
+            venueCapacity: 0,
             countryOrCity: "",
-            experience: 0,
             password: "",
             confirmPassword: ""
         }
@@ -99,35 +106,53 @@ export default function SignUpAgent() {
             {/* Form */}
             <div className="w-full lg:w-[50%] xl:w-[40%] 2xl:w-[30%] h-full flex items-center justify-center bg-white">
                 <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
-                    <div className="w-full flex flex-col gap-6">
+                    <div className="w-full flex flex-col gap-3">
                         <Image src="/sign-up-images/logo.svg" alt="logo" width={50} height={50} />
-                        <div className="flex flex-col gap-3">
-                            <h1 className="font-inter font-semibold text-[#1E1E1E] text-xl">Start Your Journey as an Agent.</h1>
-                            <p className="font-inter text-[#6B7280] text-sm">Join as an agent and simplify artist management with
+                        <div className="flex flex-col gap-1">
+                            <h1 className="font-inter font-semibold text-[#1E1E1E] text-xl">Start Your Journey as a Venue.</h1>
+                            <p className="font-inter text-[#6B7280] text-sm">Join as an Venue and simplify artist management with
                                 our all-in-one booking system.</p>
                         </div>
                     </div>
 
                     {/* shadcn */}
-                    <div className="w-full grid gap-3 items-center mt-8">
-                        <label htmlFor="fullNameOrCompanyName" className="font-inter text-sm">Full Name / Company Name</label>
-                        <Input type="text" id="fullNameOrCompanyName" placeholder="Enter Your full name / company name"
-                            className="font-inter bg-[#F2F2F2] text-black"  {...register("fullNameOrCompanyName")} />
-                        {errors.fullNameOrCompanyName && (
-                            <p className="text-red-500 text-sm font-poppins">{errors.fullNameOrCompanyName.message}</p>
+                    <div className="w-full grid gap-2 items-center mt-5">
+                        <label htmlFor="venueName" className="font-inter text-sm">Venue Name</label>
+                        <Input type="text" id="venueName" placeholder="Enter your venue name"
+                            className="font-inter bg-[#F2F2F2] text-black"  {...register("venueName")} />
+                        {errors.venueName && (
+                            <p className="text-red-500 text-sm font-poppins">{errors.venueName.message}</p>
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-6">
+                    <div className="w-full grid gap-2 items-center mt-4">
                         <label htmlFor="emailAddress" className="font-inter text-sm">Email Address</label>
-                        <Input type="text" id="emailAddress" placeholder="Enter Your email "
+                        <Input type="text" id="emailAddress" placeholder="Enter Your email"
                             className="font-inter bg-[#F2F2F2] text-black" {...register("emailAddress")} />
                         {errors.emailAddress && (
                             <p className="text-red-500 text-sm font-poppins">{errors.emailAddress.message}</p>
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-6">
+                    <div className="w-full grid gap-2 items-center mt-4">
+                        <label htmlFor="typeOfVenue" className="font-inter text-sm">Type Of Venue</label>
+                        <Input type="text" id="typeOfVenue" placeholder="Enter type of venue place"
+                            className="font-inter bg-[#F2F2F2] text-black" {...register("typeOfVenue")} />
+                        {errors.typeOfVenue && (
+                            <p className="text-red-500 text-sm font-poppins">{errors.typeOfVenue.message}</p>
+                        )}
+                    </div>
+
+                    <div className="w-full grid gap-2 items-center mt-4">
+                        <label htmlFor="venueCapacity" className="font-inter text-sm">Venue Capacity</label>
+                        <Input type="number" id="venueCapacity" placeholder="Enter number of seats / standing capacity"
+                            className="font-inter bg-[#F2F2F2] text-black" {...register("venueCapacity", { valueAsNumber: true })} />
+                        {errors.venueCapacity && (
+                            <p className="text-red-500 text-sm font-poppins">{errors.venueCapacity.message}</p>
+                        )}
+                    </div>
+
+                    <div className="w-full grid gap-2 items-center mt-4">
                         <label htmlFor="countryOrCity" className="font-inter text-sm">Country / City</label>
                         <Input type="text" id="countryOrCity" placeholder="Enter Your country/city"
                             className="font-inter bg-[#F2F2F2] text-black" {...register("countryOrCity")} />
@@ -136,22 +161,13 @@ export default function SignUpAgent() {
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-6">
-                        <label htmlFor="experience" className="font-inter text-sm">Experience</label>
-                        <Input type="number" id="experience" placeholder="Enter Your experience duration"
-                            className="font-inter bg-[#F2F2F2] text-black" {...register("experience", { valueAsNumber: true })} />
-                        {errors.experience && (
-                            <p className="text-red-500 text-sm font-poppins">{errors.experience.message}</p>
-                        )}
-                    </div>
-
-                    <div className="w-full grid gap-3 items-center mt-6">
+                    <div className="w-full grid gap-2 items-center mt-4">
                         <label htmlFor="password" className="text-[#333333] font-inter text-sm">Password</label>
                         <div className="relative w-full">
                             <Input
                                 type={showPassword1 ? "text" : "password"}
                                 id="password"
-                                placeholder="Enter your password"
+                                placeholder="Enter password"
                                 className="pr-10 font-inter bg-[#F2F2F2] text-black" // leave space for the eye button
                                 {...register("password")}
                             />
@@ -170,14 +186,14 @@ export default function SignUpAgent() {
                         )}
                     </div>
 
-                    <div className="w-full grid gap-3 items-center mt-6">
+                    <div className="w-full grid gap-2 items-center mt-4">
                         <label htmlFor="confirmPassword" className="text-[#000000] font-inter text-sm">
                             Confirm Password</label>
                         <div className="relative w-full">
                             <Input
                                 type={showPassword2 ? "text" : "password"}
                                 id="confirmPassword"
-                                placeholder="Again enter your password"
+                                placeholder="Again enter password"
                                 className="pr-10 font-inter bg-[#F2F2F2] text-black" // leave space for the button
                                 {...register("confirmPassword")}
                             />
@@ -204,7 +220,7 @@ export default function SignUpAgent() {
                         </Button>
                     </div>
 
-                    <div className="flex items-center justify-center gap-2 text-sm mt-6">
+                    <div className="flex items-center justify-center gap-2 text-sm mt-4">
                         <p className="text-[#000000] font-inter">Already have an account?</p>
                         <Link href="/sign-in" className="text-blue-700 font-inter font-sm">
                             Sign In</Link>

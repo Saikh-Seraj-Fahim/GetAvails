@@ -2,6 +2,9 @@
 
 import Image from "next/image"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { FaHandshake } from "react-icons/fa6";
+import { AiFillAudio } from "react-icons/ai";
+import Link from "next/link";
 // import { Input } from "@/components/ui/input"
 // import { Button } from "@/components/ui/button"
 
@@ -26,7 +29,7 @@ export default function SignUp() {
                     {/* Logo */}
                     <div className="mb-6">
                         <Image
-                            src="/logo.svg"
+                            src="/sign-up-images/logo.svg"
                             alt="Logo"
                             width={80}
                             height={80}
@@ -48,7 +51,7 @@ export default function SignUp() {
                                 {/* Left side (icon + label) */}
                                 <div className="flex items-center gap-2">
                                     <Image
-                                        src="/agents-logo.svg"
+                                        src="/sign-up-images/agents-logo.svg"
                                         alt="agent-logo"
                                         height={20}
                                         width={20}
@@ -64,10 +67,12 @@ export default function SignUp() {
                                     Manage your roster, negotiate deals, and track performance, all from one
                                     central dashboard.
                                 </p>
-                                <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
+                                <Link href="/sign-up-agent">
+                                    <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
                                 cursor-pointer font-inter">
-                                    Join as Agent
-                                </button>
+                                        Join as Agent
+                                    </button>
+                                </Link>
                             </AccordionContent>
 
                         </AccordionItem>
@@ -77,7 +82,7 @@ export default function SignUp() {
                                 {/* Left side (icon + label) */}
                                 <div className="flex items-center gap-2">
                                     <Image
-                                        src="/agents-logo.svg"
+                                        src="/sign-up-images/venues-logo.svg"
                                         alt="agent-logo"
                                         height={20}
                                         width={20}
@@ -104,12 +109,7 @@ export default function SignUp() {
                             <AccordionTrigger className="flex items-center justify-between">
                                 {/* Left side (icon + label) */}
                                 <div className="flex items-center gap-2">
-                                    <Image
-                                        src="/agents-logo.svg"
-                                        alt="agent-logo"
-                                        height={20}
-                                        width={20}
-                                    />
+                                    <AiFillAudio className="w-7 h-7" />
                                     <span className="font-inter text-[#235789] text-xl">Artists</span>
                                 </div>
 
@@ -132,12 +132,7 @@ export default function SignUp() {
                             <AccordionTrigger className="flex items-center justify-between">
                                 {/* Left side (icon + label) */}
                                 <div className="flex items-center gap-2">
-                                    <Image
-                                        src="/agents-logo.svg"
-                                        alt="agent-logo"
-                                        height={20}
-                                        width={20}
-                                    />
+                                    <FaHandshake className="w-7 h-7" />
                                     <span className="font-inter text-[#235789] text-xl">Organizer</span>
                                 </div>
 

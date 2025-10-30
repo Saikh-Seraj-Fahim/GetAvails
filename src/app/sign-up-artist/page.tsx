@@ -11,9 +11,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const SignUpSchema = z.object({
-    venueName: z
+    artistOrBrandName: z
         .string()
-        .min(1, "Name must be at least 1 characters")
+        .min(1, "Name must be at least 1 character")
         .max(100, "Name must not exceed 100 characters")
         .trim(),
 
@@ -23,17 +23,17 @@ const SignUpSchema = z.object({
         .toLowerCase()
         .trim(),
 
-    typeOfVenue: z
+    artCategory: z
         .string()
-        .min(1, "Name must be at least 1 character")
-        .max(100, "Name must not exceed 20 characters")
+        .min(1, "Art Category must be at least 1 character")
+        .max(100, "Art Category must not exceed 20 characters")
         .trim(),
 
-    venueCapacity: z
+    price: z
         .number()
-        .int("Venue Capacity must be a whole number")
-        .min(0, "Venue Capacity cannot be negative")
-        .max(500, "Venue Capacity seems too high"),
+        .int("Price must be a whole number")
+        .min(0, "Price cannot be negative")
+        .max(500, "Price seems too high"),
 
     countryOrCity: z
         .string()
@@ -58,7 +58,7 @@ const SignUpSchema = z.object({
 // Type inference from schema
 type SignUpFormData = z.infer<typeof SignUpSchema>;
 
-export default function SignUpVenue() {
+export default function SignUpArtist() {
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const router = useRouter();
@@ -72,10 +72,10 @@ export default function SignUpVenue() {
         resolver: zodResolver(SignUpSchema),
         mode: "onChange", // Add this for immediate validation
         defaultValues: {
-            venueName: "",
+            artistOrBrandName: "",
             emailAddress: "",
-            typeOfVenue: "",
-            venueCapacity: 0,
+            artCategory: "",
+            price: 0,
             countryOrCity: "",
             password: "",
             confirmPassword: ""
@@ -109,19 +109,19 @@ export default function SignUpVenue() {
                     <div className="w-full flex flex-col gap-3">
                         <Image src="/sign-up-images/logo.svg" alt="logo" width={50} height={50} />
                         <div className="flex flex-col gap-1">
-                            <h1 className="font-inter font-semibold text-[#1E1E1E] text-xl">Start Your Journey as a Venue.</h1>
-                            <p className="font-inter text-[#6B7280] text-sm">Join as an Venue and simplify artist management with
-                                our all-in-one booking system.</p>
+                            <h1 className="font-inter font-semibold text-[#1E1E1E] text-xl">Start Your Journey as an Artist.</h1>
+                            <p className="font-inter text-[#6B7280] text-sm">Join as an artist to showcase your talent and get
+                                discovered</p>
                         </div>
                     </div>
 
                     {/* shadcn */}
                     <div className="w-full grid gap-2 items-center mt-5">
-                        <label htmlFor="venueName" className="font-inter text-sm">Venue Name</label>
-                        <Input type="text" id="venueName" placeholder="Enter your venue name"
-                            className="font-inter bg-[#F2F2F2] text-black"  {...register("venueName")} />
-                        {errors.venueName && (
-                            <p className="text-red-500 text-sm font-poppins">{errors.venueName.message}</p>
+                        <label htmlFor="venueName" className="font-inter text-sm">Artist / Band Name</label>
+                        <Input type="text" id="venueName" placeholder="Enter your artist / band name"
+                            className="font-inter bg-[#F2F2F2] text-black"  {...register("artistOrBrandName")} />
+                        {errors.artistOrBrandName && (
+                            <p className="text-red-500 text-sm font-poppins">{errors.artistOrBrandName.message}</p>
                         )}
                     </div>
 
@@ -135,20 +135,20 @@ export default function SignUpVenue() {
                     </div>
 
                     <div className="w-full grid gap-2 items-center mt-4">
-                        <label htmlFor="typeOfVenue" className="font-inter text-sm">Type Of Venue</label>
-                        <Input type="text" id="typeOfVenue" placeholder="Enter type of venue place"
-                            className="font-inter bg-[#F2F2F2] text-black" {...register("typeOfVenue")} />
-                        {errors.typeOfVenue && (
-                            <p className="text-red-500 text-sm font-poppins">{errors.typeOfVenue.message}</p>
+                        <label htmlFor="typeOfVenue" className="font-inter text-sm">Art Category</label>
+                        <Input type="text" id="typeOfVenue" placeholder="Enter your art categories"
+                            className="font-inter bg-[#F2F2F2] text-black" {...register("artCategory")} />
+                        {errors.artCategory && (
+                            <p className="text-red-500 text-sm font-poppins">{errors.artCategory.message}</p>
                         )}
                     </div>
 
                     <div className="w-full grid gap-2 items-center mt-4">
-                        <label htmlFor="venueCapacity" className="font-inter text-sm">Venue Capacity</label>
-                        <Input type="number" id="venueCapacity" placeholder="Enter number of seats / standing capacity"
-                            className="font-inter bg-[#F2F2F2] text-black" {...register("venueCapacity", { valueAsNumber: true })} />
-                        {errors.venueCapacity && (
-                            <p className="text-red-500 text-sm font-poppins">{errors.venueCapacity.message}</p>
+                        <label htmlFor="price" className="font-inter text-sm">Price</label>
+                        <Input type="number" id="price" placeholder="Enter your price range per event"
+                            className="font-inter bg-[#F2F2F2] text-black" {...register("price", { valueAsNumber: true })} />
+                        {errors.price && (
+                            <p className="text-red-500 text-sm font-poppins">{errors.price.message}</p>
                         )}
                     </div>
 

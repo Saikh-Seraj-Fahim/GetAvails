@@ -1,12 +1,9 @@
 'use client'
-
 import Image from "next/image"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { FaHandshake } from "react-icons/fa6";
 import { AiFillAudio } from "react-icons/ai";
 import Link from "next/link";
-// import { Input } from "@/components/ui/input"
-// import { Button } from "@/components/ui/button"
 
 export default function SignUp() {
     return (

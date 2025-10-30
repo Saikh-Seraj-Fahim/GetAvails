@@ -9,39 +9,22 @@ export default function SignUp() {
     return (
         <div className="w-full h-screen flex">
             {/* Left Image Section */}
-            <div className="lg:w-[70%] relative hidden lg:block">
-                <Image
-                    src="/stage.png"
-                    alt="Sign Up Background Image"
-                    fill
-                    className="object-cover"
-                    priority
-                />
+            <div className="hidden lg:block lg:w-[50%] xl:w-[60%] 2xl:w-[70%] h-full relative">
+                <Image src="/stage.png" alt="background" fill className="object-cover object-center" />
             </div>
 
-
-            {/* Right Form Section */}
-            <div className="w-full lg:w-[30%] flex flex-col items-center justify-center px-8 py-10 bg-white">
-                <div>
-                    {/* Logo */}
-                    <div className="mb-6">
-                        <Image
-                            src="/sign-up-images/logo.svg"
-                            alt="Logo"
-                            width={80}
-                            height={80}
-                        />
-                    </div>
-
-                    {/* Title & Subtitle */}
-                    <div className="text-center mb-8">
-                        <h1 className="text-3xl font-semibold font-inter text-[#1E1E1E]">Which Role Are You Joining As?</h1>
-                        <p className="text-[#6B7280] font-inter font-semibold mt-2">Define your role and let us customize your dashboard</p>
+            {/* Right Section */}
+            <div className="w-full lg:w-[50%] xl:w-[40%] 2xl:w-[30%] h-full flex flex-col items-center justify-center bg-white">
+                <div className="flex flex-col gap-6">
+                    <Image src="/sign-up-images/logo.svg" alt="logo" width={50} height={50} />
+                    <div className="flex flex-col gap-3">
+                        <h1 className="font-inter font-semibold text-[#1E1E1E] text-xl">Which Role Are You Joining As?</h1>
+                        <p className="font-inter text-[#6B7280] text-sm">Define your role and let us customize your dashboard</p>
                     </div>
                 </div>
 
                 {/* Accordion Section */}
-                <div className="mt-10 w-full max-w-sm">
+                <div className="w-full max-w-sm mt-10">
                     <Accordion type="single" collapsible>
                         <AccordionItem value="item-1">
                             <AccordionTrigger className="flex items-center justify-between">
@@ -55,7 +38,6 @@ export default function SignUp() {
                                     />
                                     <span className="font-inter text-[#235789] text-xl">Agents</span>
                                 </div>
-
                                 {/* The arrow icon will automatically appear here on the right
                                 because of `justify-between` */}
                             </AccordionTrigger>
@@ -71,7 +53,6 @@ export default function SignUp() {
                                     </button>
                                 </Link>
                             </AccordionContent>
-
                         </AccordionItem>
 
                         <AccordionItem value="item-2">
@@ -86,7 +67,6 @@ export default function SignUp() {
                                     />
                                     <span className="font-inter text-[#235789] text-xl">Venues</span>
                                 </div>
-
                                 {/* The arrow icon will automatically appear here on the right
                                 because of `justify-between` */}
                             </AccordionTrigger>
@@ -95,10 +75,12 @@ export default function SignUp() {
                                     Manage your space, manage bookings, and connect with the right talent to keep your calendar full
                                     and your audience engaged.
                                 </p>
-                                <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
+                                <Link href="sign-up-venue">
+                                    <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
                                 cursor-pointer font-inter">
-                                    Join as Venues
-                                </button>
+                                        Join as Venues
+                                    </button>
+                                </Link>
                             </AccordionContent>
                         </AccordionItem>
 
@@ -109,7 +91,6 @@ export default function SignUp() {
                                     <AiFillAudio className="w-7 h-7" />
                                     <span className="font-inter text-[#235789] text-xl">Artists</span>
                                 </div>
-
                                 {/* The arrow icon will automatically appear here on the right
                                 because of `justify-between` */}
                             </AccordionTrigger>
@@ -118,10 +99,12 @@ export default function SignUp() {
                                     Showcase your talent, get discovered, and secure gigs while managing your schedule and performance
                                     details in one place.
                                 </p>
-                                <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
+                                <Link href="sign-up-artist">
+                                    <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
                                 cursor-pointer font-inter">
-                                    Join as Artists
-                                </button>
+                                        Join as Artists
+                                    </button>
+                                </Link>
                             </AccordionContent>
                         </AccordionItem>
 
@@ -132,7 +115,6 @@ export default function SignUp() {
                                     <FaHandshake className="w-7 h-7" />
                                     <span className="font-inter text-[#235789] text-xl">Organizer</span>
                                 </div>
-
                                 {/* The arrow icon will automatically appear here on the right
                                 because of `justify-between` */}
                             </AccordionTrigger>
@@ -141,10 +123,12 @@ export default function SignUp() {
                                     Browse artists, book performances, and streamline payments-all while ensuring unforgettable
                                     experiences for your events.
                                 </p>
-                                <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
+                                <Link href="sign-up-buyer">
+                                    <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
                                 cursor-pointer font-inter">
-                                    Join as Artists
-                                </button>
+                                        Join as Buyer
+                                    </button>
+                                </Link>
                             </AccordionContent>
                         </AccordionItem>
                     </Accordion>

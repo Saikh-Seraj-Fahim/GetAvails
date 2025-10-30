@@ -31,9 +31,9 @@ const SignInSchema = z.object({
 // Type inference from schema
 type SignInFormData = z.infer<typeof SignInSchema>;
 
-export default function SignUpAgent() {
-    const [showPassword1, setShowPassword1] = useState(false);
-    const [showPassword2, setShowPassword2] = useState(false);
+export default function SignIn() {
+    const [showPassword, setShowPassword1] = useState(false);
+
     const router = useRouter();
 
     const {
@@ -97,7 +97,7 @@ export default function SignUpAgent() {
                         <label htmlFor="password" className="text-[#333333] font-inter text-sm">Password</label>
                         <div className="relative w-full">
                             <Input
-                                type={showPassword1 ? "text" : "password"}
+                                type={showPassword ? "text" : "password"}
                                 id="password"
                                 placeholder="Enter your password"
                                 className="pr-10 font-inter bg-[#F2F2F2] text-black" // leave space for the eye button
@@ -105,8 +105,8 @@ export default function SignUpAgent() {
                             />
                             <Button type="button" variant="ghost" className="absolute right-1 top-1/2 
                             -translate-y-1/2 cursor-pointer"
-                                onClick={() => setShowPassword1(!showPassword1)}>
-                                {showPassword1 ? (
+                                onClick={() => setShowPassword1(!showPassword)}>
+                                {showPassword ? (
                                     <EyeOff className="h-4 w-4" />
                                 ) : (
                                     <Eye className="h-4 w-4" />
@@ -114,7 +114,7 @@ export default function SignUpAgent() {
                             </Button>
                         </div>
                         {errors.password && (
-                            <p className="text-red-500 text-sm font-poppins">{errors.password.message}</p>
+                            <p className="text-red-500 text-sm font-inter">{errors.password.message}</p>
                         )}
                     </div>
 

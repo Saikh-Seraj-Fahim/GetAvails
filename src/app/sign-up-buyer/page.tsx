@@ -73,7 +73,7 @@ export default function SignUpBuyer() {
             // Simulate API call
             await new Promise(resolve => setTimeout(resolve, 1000));
             console.log("Form submitted:", data);
-            //router.push("/sign-in");
+            router.push("/sign-in");
             // Handle successful submission here
         } catch (error) {
             console.error("Submission error:", error);
@@ -149,7 +149,7 @@ export default function SignUpBuyer() {
                             </Button>
                         </div>
                         {errors.password && (
-                            <p className="text-red-500 text-sm font-poppins">{errors.password.message}</p>
+                            <p className="text-red-500 text-sm font-inter">{errors.password.message}</p>
                         )}
                     </div>
 
@@ -175,7 +175,7 @@ export default function SignUpBuyer() {
                             </Button>
                         </div>
                         {errors.confirmPassword && (
-                            <p className="text-red-500 text-sm font-poppins">
+                            <p className="text-red-500 text-sm font-inter">
                                 {errors.confirmPassword.message}</p>
                         )}
                     </div>

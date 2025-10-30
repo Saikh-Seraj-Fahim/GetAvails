@@ -24,8 +24,8 @@ export default function NavBar() {
         href: "/services",
         text: "Services"
     }, {
-        href: "/blog",
-        text: "Blog"
+        href: "/blogs",
+        text: "Blogs"
     }, {
         href: "/contact-us",
         text: "Contact Us"

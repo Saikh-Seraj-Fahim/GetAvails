@@ -1,6 +1,10 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Search, X } from 'lucide-react';
+import { ChevronDownIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 // Added TypeScript interface for Artist
 interface Artist {
@@ -41,23 +45,26 @@ const locations: Location[] = [
 
 export default function HomePageHero() {
     // ✏️ CHANGED: Added type annotations to state
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [search, setSearch] = useState<string>('');
-    const [selected, setSelected] = useState<Artist | null>(null);
-    // ✏️ CHANGED: Added type to useRef
-    const ref = useRef<HTMLDivElement>(null);
+    const [isOpenArtist, setIsOpenArtist] = useState<boolean>(false);
+    const [searchArtist, setSearchArtist] = useState<string>('');
+    const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
+    // ✏️ CHANGED: Added type to userefArtist
+    const refArtist = useRef<HTMLDivElement>(null);
 
-    const filtered = artists.filter(a =>
-        a.name.toLowerCase().includes(search.toLowerCase())
+    const filteredArtists = artists.filter(a =>
+        a.name.toLowerCase().includes(searchArtist.toLowerCase())
     );
 
     useEffect(() => {
         // ✏️ CHANGED: Added type to event parameter
-        const handleClick = (e: MouseEvent) => {
-            if (ref.current && !ref.current.contains(e.target as Node)) setIsOpen(false);
+        // e contains info about where user clicked. e.target = the element user clicked on.
+        const handleClickArtist = (e: MouseEvent) => {
+            if (refArtist.current && !refArtist.current.contains(e.target as Node)) {
+                setIsOpenArtist(false);
+            }
         };
-        document.addEventListener('mousedown', handleClick);
-        return () => document.removeEventListener('mousedown', handleClick);
+        document.addEventListener('mousedown', handleClickArtist); // mousedown = fires when mouse button is pressed.
+        return () => document.removeEventListener('mousedown', handleClickArtist);
     }, []);
 
 
@@ -65,10 +72,11 @@ export default function HomePageHero() {
     const [isOpenLocation, setIsOpenLocation] = useState<boolean>(false);
     const [searchLocation, setSearchLocation] = useState<string>('');
     const [selectedLocation, setSelectedLocation] = useState<Artist | null>(null);
-    // ✏️ CHANGED: Added type to useRef
+    // ✏️ CHANGED: Added type to userefArtist
+
     const refLocation = useRef<HTMLDivElement>(null);
 
-    const filteredLocation = locations.filter(a =>
+    const filteredLocations = locations.filter(a =>
         a.name.toLowerCase().includes(searchLocation.toLowerCase())
     );
 
@@ -81,11 +89,14 @@ export default function HomePageHero() {
         return () => document.removeEventListener('mousedown', handleClickLocation);
     }, []);
 
+    const [date, setDate] = useState<Date | undefined>(undefined);
+    const [open, setOpen] = useState<boolean>(false); // for calender
+
     return (
         <div className="p-16 flex gap-12">
-            <div className="w-1/2 ">
-                <h1 className="font-medium font-IBM-plex-sans text-5xl">Smarter Talent Booking, All in One Place</h1>
-                <p className="text-[#6B7280] mt-6 text-xl">The all-in-one platform for agents, artists, venues, and buyers to search,
+            <div className="w-full xl:w-1/2">
+                <h1 className="font-medium font-IBM-plex-sans text-2xl lg:text-5xl">Smarter Talent Booking, All in One Place</h1>
+                <p className="text-[#6B7280] mt-6 text-xl">The all-in-one platform for agents, artists, venues, and buyers to searchArtist,
                     book and grow - smarter and faster.</p>
                 <button className="bg-[#235789] text-[#FFFFFF] font-inter px-6 py-2 rounded-4xl flex gap-2 mt-6 cursor-pointer">
                     Join Now
@@ -94,53 +105,53 @@ export default function HomePageHero() {
 
 
                 <div className="w-full p-8 mt-7 border-2 rounded-md">
-                    {/* Search for Artists */}
-                    <div ref={ref} className="relative">
-                        <button onClick={() => setIsOpen(!isOpen)}
+                    {/* searchArtist for Artists */}
+                    <div ref={refArtist} className="relative w-full">
+                        <button onClick={() => setIsOpenArtist(!isOpenArtist)}
                             className="w-full bg-white rounded-full shadow hover:shadow-md transition-shadow px-6 py-4 
                             flex items-center justify-between border-2 border-transparent hover:border-gray-200"
                         >
                             <div className="flex items-center gap-3">
                                 <Search className="w-5 h-5 text-gray-400" />
-                                <span className={selected ? "text-gray-800 font-medium" : "text-gray-500"}>
-                                    {selected ? selected.name : 'Search for Artists'}
+                                <span className={selectedArtist ? "text-gray-800 font-medium font-inter" : "text-gray-500 font-inter"}>
+                                    {selectedArtist ? selectedArtist.name : 'Search for Artists'}
                                 </span>
                             </div>
 
                             <div className="flex items-center gap-2">
-                                {selected && (
-                                    < X onClick={(e: React.MouseEvent) => { e.stopPropagation(); setSelected(null); }}
+                                {selectedArtist && (
+                                    < X onClick={(e: React.MouseEvent) => { e.stopPropagation(); setSelectedArtist(null); }}
                                         className="w-4 h-4 text-gray-500 hover:text-gray-700" />
                                 )}
-                                <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                                <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${isOpenArtist ? 'rotate-180' :
+                                    'rotate-0'}`} />
                             </div>
                         </button>
 
-                        {isOpen && (
+                        {isOpenArtist && (
                             <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border z-50">
                                 <div className="p-4 border-b">
-                                    <input type="text" placeholder="Search artists..." value={search}
-                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                        autoFocus
+                                    <input type="text" placeholder="Search Artists..." value={searchArtist}
+                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchArtist(e.target.value)}
+                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 
+                                        focus:ring-blue-400" autoFocus
                                     />
                                 </div>
 
                                 <div className="max-h-80 overflow-y-auto py-2">
-                                    {filtered.length > 0 ? (
-                                        filtered.map((a) => (
+                                    {filteredArtists.length > 0 ? (
+                                        filteredArtists.map((a) => (
                                             <button
                                                 key={a.id}
-                                                onClick={() => { setSelected(a); setSearch(''); setIsOpen(false); }}
-                                                className="w-full px-6 py-3 text-left hover:bg-gray-50 flex justify-between 
-                                                items-center"
+                                                onClick={() => { setSelectedArtist(a); setSearchArtist(''); setIsOpenArtist(false); }}
+                                                className="w-full px-6 py-3 text-left hover:bg-gray-200 flex justify-between 
+                                                items-center font-inter cursor-pointer"
                                             >
                                                 <div className="font-medium text-gray-800">{a.name}</div>
-                                                {selected?.id === a.id && <div className="w-2 h-2 bg-blue-600 rounded-full" />}
                                             </button>
                                         ))
                                     ) : (
-                                        <div className="px-6 py-8 text-center text-gray-500">
+                                        <div className="px-6 py-8 text-center text-gray-500 font-inter">
                                             <p>No artists found</p>
                                         </div>
                                     )}
@@ -148,72 +159,106 @@ export default function HomePageHero() {
                             </div>
                         )}
                     </div>
-                    {/* {selected && (
+                    {/* {selectedArtist && (
                         <div className="mt-8 p-6 bg-white rounded-2xl shadow-md">
-                            <h2 className="text-lg font-semibold mb-2">Selected Artist</h2>
-                            <p className="text-xl font-bold">{selected.name}</p>
+                            <h2 className="text-lg font-semibold mb-2">selectedArtist Artist</h2>
+                            <p className="text-xl font-bold">{selectedArtist.name}</p>
                         </div>
                     )} */}
 
 
-                    {/* Select Location */}
-                    <div ref={refLocation} className="relative mt-4">
-                        <button onClick={() => setIsOpenLocation(!isOpenLocation)}
-                            className="w-full bg-white rounded-full shadow hover:shadow-md transition-shadow px-6 py-4 
+                    <div className="w-full flex flex-col lg:flex-row gap-6 mt-4">
+                        {/* Select Location */}
+                        <div ref={refLocation} className="relative flex-1">
+                            <button onClick={() => setIsOpenLocation(!isOpenLocation)}
+                                className="w-full bg-white rounded-full shadow hover:shadow-md transition-shadow px-6 py-4 
                             flex items-center justify-between border-2 border-transparent hover:border-gray-200"
-                        >
-                            <div className="flex items-center gap-3">
-                                <Search className="w-5 h-5 text-gray-400" />
-                                <span className={selectedLocation ? "text-gray-800 font-medium" : "text-gray-500"}>
-                                    {selectedLocation ? selectedLocation.name : 'Search for Locations..'}
-                                </span>
-                            </div>
-
-                            <div className="flex items-center gap-2">
-                                {selectedLocation && (
-                                    < X onClick={(e: React.MouseEvent) => { e.stopPropagation(); setSelectedLocation(null); }}
-                                        className="w-4 h-4 text-gray-500 hover:text-gray-700" />
-                                )}
-                                <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${isOpenLocation ? 'rotate-180' : ''}`} />
-                            </div>
-                        </button>
-
-                        {isOpenLocation && (
-                            <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border z-50">
-                                <div className="p-4 border-b">
-                                    <input type="text" placeholder="Search artists..." value={searchLocation}
-                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchLocation(e.target.value)}
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                        autoFocus
-                                    />
+                            >
+                                <div className="flex items-center gap-3">
+                                    <Search className="w-5 h-5 text-gray-400" />
+                                    <span className={selectedLocation ? "text-gray-800 font-medium" : "text-gray-500"}>
+                                        {selectedLocation ? selectedLocation.name : 'Search for Locations..'}
+                                    </span>
                                 </div>
 
-                                <div className="max-h-80 overflow-y-auto py-2">
-                                    {filteredLocation.length > 0 ? (
-                                        filteredLocation.map((a) => (
-                                            <button
-                                                key={a.id}
-                                                onClick={() => { setSelected(a); setSearch(''); setIsOpen(false); }}
-                                                className="w-full px-6 py-3 text-left hover:bg-gray-50 flex justify-between 
-                                                items-center"
-                                            >
-                                                <div className="font-medium text-gray-800">{a.name}</div>
-                                                {selectedLocation?.id === a.id && <div className="w-2 h-2 bg-blue-600 rounded-full" />}
-                                            </button>
-                                        ))
-                                    ) : (
-                                        <div className="px-6 py-8 text-center text-gray-500">
-                                            <p>No artists found</p>
-                                        </div>
+                                <div className="flex items-center gap-2">
+                                    {selectedLocation && (
+                                        < X onClick={(e: React.MouseEvent) => { e.stopPropagation(); setSelectedLocation(null); }}
+                                            className="w-4 h-4 text-gray-500 hover:text-gray-700" />
                                     )}
+                                    <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${isOpenLocation ?
+                                        'rotate-180' : 'rotate-0'}`} />
                                 </div>
-                            </div>
-                        )}
+                            </button>
+
+                            {isOpenLocation && (
+                                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border z-50">
+                                    <div className="p-4 border-b">
+                                        <input type="text" placeholder="Search Location..." value={searchLocation}
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchLocation(e.target.value)}
+                                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 
+                                            focus:ring-blue-400 font-inter" autoFocus
+                                        />
+                                    </div>
+
+                                    <div className="max-h-80 overflow-y-auto py-2">
+                                        {filteredLocations.length > 0 ? (
+                                            filteredLocations.map((a) => (
+                                                <button
+                                                    key={a.id}
+                                                    onClick={() => {
+                                                        setSelectedLocation(a); setSearchLocation('');
+                                                        setIsOpenLocation(false);
+                                                    }}
+                                                    className="w-full px-6 py-3 text-left hover:bg-gray-200 flex justify-between 
+                                                items-center cursor-pointer"
+                                                >
+                                                    <div className="font-medium text-gray-800">{a.name}</div>
+                                                    {selectedLocation?.id === a.id && <div className="w-2 h-2 bg-blue-600 
+                                                    rounded-full" />}
+                                                </button>
+                                            ))
+                                        ) : (
+                                            <div className="px-6 py-8 text-center text-gray-500">
+                                                <p>No artists found</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="flex-1">
+                            <Popover open={open} onOpenChange={setOpen}>
+                                <PopoverTrigger asChild>
+                                    <Button variant="outline" id="date" className="w-full justify-between font-normal">
+                                        {date ? date.toLocaleDateString() : "Select Date Range"}
+                                        <ChevronDownIcon />
+                                    </Button>
+                                </PopoverTrigger>
+                                <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+                                    <Calendar
+                                        mode="single"
+                                        selected={date}
+                                        captionLayout="dropdown"
+                                        onSelect={(date) => {
+                                            setDate(date)
+                                            setOpen(false)
+                                        }}
+                                    />
+                                </PopoverContent>
+                            </Popover>
+                        </div>
                     </div>
+
+                    <Button variant="secondary" className="w-full mt-4 rounded-full bg-[#1E1E1E] text-[#FFFFFF] font-inter
+                    hover:bg-[#1E1E1E] cursor-pointer">
+                        Search Availability
+                    </Button>
                 </div>
             </div>
 
-            <div className="w-1/2">
+            <div className="w-full xl:w-1/2">
 
             </div>
         </div>

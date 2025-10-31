@@ -93,7 +93,7 @@ export default function HomePageHero() {
     const [open, setOpen] = useState<boolean>(false); // for calender
 
     return (
-        <div className="p-16 flex gap-12">
+        <div className="p-16 flex flex-col xl:flex-row gap-12">
             <div className="w-full xl:w-1/2">
                 <h1 className="font-medium font-IBM-plex-sans text-2xl lg:text-5xl">Smarter Talent Booking, All in One Place</h1>
                 <p className="text-[#6B7280] mt-6 text-xl">The all-in-one platform for agents, artists, venues, and buyers to searchArtist,
@@ -258,8 +258,10 @@ export default function HomePageHero() {
                 </div>
             </div>
 
-            <div className="w-full xl:w-1/2">
 
+            <div className="w-full xl:w-1/2">
+                <video src={"/home-page-images/hero-section-video.mp4"} autoPlay muted loop controls={true} className="w-full h-full  
+                object-cover rounded-4xl"/>
             </div>
         </div>
     );

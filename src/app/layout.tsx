@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Spline_Sans } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 
 const interFont = Inter({
   subsets: ["latin"],
@@ -13,6 +14,12 @@ const splineSansFont = Spline_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-spline-sans"
+});
+
+const IBMPlexSens = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-IBM-plex-sans"
 });
 
 export const metadata: Metadata = {
@@ -28,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interFont.variable} ${splineSansFont.variable} antialiased`}
+        className={`${interFont.variable} ${splineSansFont.variable} ${IBMPlexSens.variable} antialiased`}
       >
         {children}
       </body>

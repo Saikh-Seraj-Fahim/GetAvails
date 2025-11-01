@@ -55,7 +55,8 @@ export default function NavBar() {
     // }, [isMenuOpen]);
 
     return <>
-        <header className="sticky top-0 right-2 left-2 w-full bg-white dark:bg-gray-900/80 backdrop-blur-md dark:border-gray-800">
+        <header className="sticky top-0 right-2 left-2 w-full bg-white dark:bg-gray-900/80 backdrop-blur-md 
+        dark:border-gray-800 z-50">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     {/* Logo Section */}

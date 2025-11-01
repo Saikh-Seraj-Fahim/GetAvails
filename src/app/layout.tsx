@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Spline_Sans } from "next/font/google";
 import { IBM_Plex_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
 const interFont = Inter({
   subsets: ["latin"],
@@ -16,10 +17,16 @@ const splineSansFont = Spline_Sans({
   variable: "--font-spline-sans"
 });
 
-const IBMPlexSens = IBM_Plex_Sans({
+const IBMPlexSensFont = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-IBM-plex-sans"
+});
+
+const montSerratFont = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat"
 });
 
 export const metadata: Metadata = {
@@ -35,7 +42,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interFont.variable} ${splineSansFont.variable} ${IBMPlexSens.variable} antialiased`}
+        className={`${interFont.variable} ${splineSansFont.variable} ${IBMPlexSensFont.variable} ${montSerratFont.variable} antialiased`}
       >
         {children}
       </body>

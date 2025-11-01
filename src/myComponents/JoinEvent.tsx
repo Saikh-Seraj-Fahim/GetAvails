@@ -5,7 +5,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 
 export default function JoinEvent() {
     return (
-        <div className="w-full p-8 border-2 rounded-4xl">
+        <div className="w-full p-8 border-2 rounded-2xl">
             <button className="bg-[#235789] text-[#FFFFFF] font-inter px-4 py-1 rounded-lg cursor-pointer"> Live Concert</button>
             <p className='font-inter mt-4'>25 December 2025, 7:00 PM – 11:00 PM</p>
 

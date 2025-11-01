@@ -129,7 +129,7 @@ export default function HomePageHero() {
                         </button>
 
                         {isOpenArtist && (
-                            <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border z-50">
+                            <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border z-40">
                                 <div className="p-4 border-b">
                                     <input type="text" placeholder="Search Artists..." value={searchArtist}
                                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchArtist(e.target.value)}
@@ -192,7 +192,7 @@ export default function HomePageHero() {
                             </button>
 
                             {isOpenLocation && (
-                                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border z-50">
+                                <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border z-40">
                                     <div className="p-4 border-b">
                                         <input type="text" placeholder="Search Location..." value={searchLocation}
                                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchLocation(e.target.value)}

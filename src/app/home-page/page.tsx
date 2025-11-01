@@ -1,6 +1,7 @@
 "use client"
 import HomePageHero from "@/myComponents/HomePageHero";
 import JoinEvent from "@/myComponents/JoinEvent";
+import PricingSection from "@/myComponents/PricingSection";
 import TalentBookingJourney from "@/myComponents/TalentBookingJourney";
 import WhichRole from "@/myComponents/WhichRole";
 import { CgProfile } from "react-icons/cg";
@@ -51,6 +52,15 @@ export default function HomePage() {
                     Joining As?</h1>
                 <p className="font-inter text-[#6B7280] text-center mt-2">Define your role and let us customize your dashboard.</p>
                 <WhichRole />
+            </div>
+
+            {/* Pricing */}
+            <div className="mt-16">
+                <h1 className="font-semibold font-IBM-plex-sans text-3xl text-[#235789] text-center">Free to Start. Powerful When
+                    You Upgrade.</h1>
+                <p className="font-inter text-[#6B7280] text-center mt-2">Choose a plan that fits your role — Agent, Venue, Artist
+                    or Buyer.</p>
+                <PricingSection />
             </div>
         </div>
     );

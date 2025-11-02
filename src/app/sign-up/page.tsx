@@ -113,7 +113,7 @@ export default function SignUp() {
                                 {/* Left side (icon + label) */}
                                 <div className="flex items-center gap-2">
                                     <FaHandshake className="w-7 h-7" />
-                                    <span className="font-inter text-[#235789] text-xl">Organizer</span>
+                                    <span className="font-inter text-[#235789] text-xl">Buyer</span>
                                 </div>
                                 {/* The arrow icon will automatically appear here on the right
                                 because of `justify-between` */}

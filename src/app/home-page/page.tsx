@@ -14,7 +14,7 @@ import { IoSearch } from "react-icons/io5";
 
 export default function HomePage() {
     return (
-        <div className="xl:px-28">
+        <div className="px-6 sm:px-12 md:px-16 xl:px-28">
             <HomePageHero />
 
             {/* Join Event */}
@@ -124,7 +124,7 @@ export default function HomePage() {
                     <button className="p-2 rounded-full text-black bg-white dark:text-gray-300 
                     dark:hover:bg-gray-800 transition-colors flex gap-2 cursor-pointer">
                         Get Started – It’s Free
-                        <FaArrowRightLong />
+                        <FaArrowRightLong className="translate-y-1/3" />
                     </button>
                     <button className="p-2 rounded-full text-black bg-white dark:text-gray-300 
                     dark:hover:bg-gray-800 transition-colors cursor-pointer">

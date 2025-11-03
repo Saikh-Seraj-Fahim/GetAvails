@@ -1,10 +1,12 @@
 "use client"
 import HomePageHero from "@/myComponents/HomePageHero";
+import Insights from "@/myComponents/insights";
 import JoinEvent from "@/myComponents/JoinEvent";
 import PricingSection from "@/myComponents/PricingSection";
 import TalentBookingJourney from "@/myComponents/TalentBookingJourney";
 import Testimonial from "@/myComponents/Testimonial";
 import WhichRole from "@/myComponents/WhichRole";
+import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { IoSearch } from "react-icons/io5";
 
@@ -92,6 +94,15 @@ export default function HomePage() {
                     <Testimonial imageName="testimonial-2.png" name="Ethan Brooks" profession="Artist" review="I used to juggle 
                     multiple apps. Now I just log in to GetAvails and everything’s in one place."/>
                 </div>
+            </div>
+
+            <div className="flex flex-col items-center justify-center mt-16 bg-[#1E1E1E]">
+                <h1 className="font-semibold font-IBM-plex-sans text-3xl text-[#FFFFFF] pt-16">Insights from the Stage &
+                    Studio</h1>
+                <p className="font-inter text-[#A4A4A4] mt-2">From stadium-filling performers to intimate venues,
+                    our network spans every corner of the entertainment industry.</p>
+                <Insights />
+                <Link href="/blogs" className="text-white mt-8 underline">View All Blog Posts</Link>
             </div>
         </div>
     );

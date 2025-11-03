@@ -4,10 +4,12 @@ import Insights from "@/myComponents/insights";
 import JoinEvent from "@/myComponents/JoinEvent";
 import PricingSection from "@/myComponents/PricingSection";
 import TalentBookingJourney from "@/myComponents/TalentBookingJourney";
+import TalkAssistant from "@/myComponents/TalkAssistant";
 import Testimonial from "@/myComponents/Testimonial";
 import WhichRole from "@/myComponents/WhichRole";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 
 export default function HomePage() {
@@ -96,6 +98,7 @@ export default function HomePage() {
                 </div>
             </div>
 
+            {/* Insights */}
             <div className="flex flex-col items-center justify-center mt-16 bg-[#1E1E1E]">
                 <h1 className="font-semibold font-IBM-plex-sans text-3xl text-[#FFFFFF] pt-16">Insights from the Stage &
                     Studio</h1>
@@ -103,6 +106,31 @@ export default function HomePage() {
                     our network spans every corner of the entertainment industry.</p>
                 <Insights />
                 <Link href="/blogs" className="text-white mt-8 underline">View All Blog Posts</Link>
+            </div>
+
+            {/* TalkAssistant */}
+            <div className="flex flex-col items-center justify-center mt-16">
+                <h1 className="font-semibold font-IBM-plex-sans text-3xl text-[#235789]">Talk to Your Assistant. Book in
+                    Minutes.</h1>
+                <p className="font-inter text-[#A4A4A4] mt-2">Need to find talent, check availability, confirm a venue, or send
+                    a contract? Getavails AI Assistant helps you do it faster - just like texting a team member.</p>
+                <TalkAssistant />
+            </div>
+
+            <div className="flex flex-col items-center justify-center mt-16 pt-12 pb-12 bg-black">
+                <h1 className="font-semibold font-IBM-plex-sans text-3xl text-[#FFFFFF]">Book Smarter. Tour Faster. Getavails
+                    is Here.</h1>
+                <div className="flex flex-col md:flex-row gap-4 mt-12">
+                    <button className="p-2 rounded-full text-black bg-white dark:text-gray-300 
+                    dark:hover:bg-gray-800 transition-colors flex gap-2 cursor-pointer">
+                        Get Started – It’s Free
+                        <FaArrowRightLong />
+                    </button>
+                    <button className="p-2 rounded-full text-black bg-white dark:text-gray-300 
+                    dark:hover:bg-gray-800 transition-colors cursor-pointer">
+                        Learn how it works
+                    </button>
+                </div>
             </div>
         </div>
     );

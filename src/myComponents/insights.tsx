@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Insights() {
     return (
-        <div className="flex flex-col lg:flex-row gap-6 w-full h-auto lg:h-[580px] mt-8 xl:px-44">
+        <div className="flex flex-col lg:flex-row gap-6 w-full lg:h-[580px] mt-8 xl:px-44">
             <div className="relative w-full lg:w-1/3 h-[400px] lg:h-full">
                 <Image src="/home-page-images/insights-1.png" alt="insights-1" fill className="object-cover object-center" />
                 <div className="w-full absolute inset-x-0 bottom-0 min-h-[40%] backdrop-blur-sm p-2 lg:p-8">

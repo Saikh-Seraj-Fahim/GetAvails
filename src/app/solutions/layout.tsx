@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     description: "",
 };
 
-export default function HomePageLayout({
+export default function SolutionsLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

@@ -1,12 +1,12 @@
 "use client"
-import HomePageHero from "@/myComponents/home-page/HomePageHero";
-import Insights from "@/myComponents/home-page/insights";
-import JoinEvent from "@/myComponents/home-page/JoinEvent";
-import PricingSection from "@/myComponents/home-page/PricingSection";
-import TalentBookingJourney from "@/myComponents/home-page/TalentBookingJourney";
-import TalkAssistant from "@/myComponents/home-page/TalkAssistant";
-import Testimonial from "@/myComponents/home-page/Testimonial";
-import WhichRole from "@/myComponents/home-page/WhichRole";
+import HomePageHero from "@/myComponents/HomePage/HomePageHero";
+import Insights from "@/myComponents/HomePage/insights";
+import JoinEvent from "@/myComponents/HomePage/JoinEvent";
+import PricingSection from "@/myComponents/HomePage/PricingSection";
+import TalentBookingJourney from "@/myComponents/HomePage/TalentBookingJourney";
+import TalkAssistant from "@/myComponents/HomePage/TalkAssistant";
+import Testimonial from "@/myComponents/HomePage/Testimonial";
+import WhichRole from "@/myComponents/HomePage/WhichRole";
 import Link from "next/link";
 import { CgProfile } from "react-icons/cg";
 import { FaArrowRightLong } from "react-icons/fa6";

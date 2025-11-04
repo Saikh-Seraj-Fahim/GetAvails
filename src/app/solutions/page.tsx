@@ -1,6 +1,6 @@
-import OneCorePlatform from "@/myComponents/solutions/OneCorePlatform";
-import OnePlatform from "@/myComponents/solutions/OnePlatform";
-import SolutionsHero from "@/myComponents/solutions/SolutionsHero";
+import OneCorePlatform from "@/myComponents/Solutions/OneCorePlatform";
+import OnePlatform from "@/myComponents/Solutions/OnePlatform";
+import SolutionsHero from "@/myComponents/Solutions/SolutionsHero";
 import { FaArrowRightLong, FaMessage } from "react-icons/fa6";
 import { IoLinkSharp } from "react-icons/io5";
 

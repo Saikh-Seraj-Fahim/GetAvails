@@ -7,8 +7,7 @@ export default function SolutionsHero() {
             rounded-3xl"/>
             <div className="absolute w-full h-full z-10 bg-gray-900/50 rounded-3xl" /> {/*Overlay*/}
 
-            {/* Right Section */}
-            <div className="absolute flex flex-col items-center justify-center p-4 lg:p-12">
+            <div className="absolute flex flex-col items-center justify-center p-4 lg:p-12 z-30">
                 <h1 className="font-IBM-plex-sans text-white text-3xl xl:text-5xl text-center">Solutions for Every Role in the
                     Live Entertainment Ecosystem</h1>
                 <p className="font-inter text-[#A4A4A4] text-xl text-center mt-6">Getavails isn't just a booking tool, it's a

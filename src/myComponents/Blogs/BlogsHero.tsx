@@ -178,6 +178,7 @@ export default function BlogsHero() {
 
             {/* Featured Cards Section */}
             {/* mx-auto is working for laptop and desktop display. px-3 md:px-8 is mainly for mobile and tablet. */}
+
             <div className="max-w-5xl mx-auto px-3 md:px-8 -mt-36 z-20 grid grid-cols-1 md:grid-cols-2 gap-16">
                 {featuredBlogs.map((blog) => (
                     <div key={blog.id} className="rounded-2xl shadow-lg overflow-hidden bg-[#F6FBFF]">

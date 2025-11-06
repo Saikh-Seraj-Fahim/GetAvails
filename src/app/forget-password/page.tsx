@@ -88,7 +88,7 @@ export default function ForgetPassword() {
 
                     <div className="flex items-center justify-center gap-2 text-sm mt-6">
                         <p className="text-[#000000] font-inter">Already have an account?</p>
-                        <Link href="" className="text-blue-700 font-inter font-sm">
+                        <Link href="/sign-in" className="text-blue-700 font-inter font-sm">
                             Sign In</Link>
                     </div>
                 </form>

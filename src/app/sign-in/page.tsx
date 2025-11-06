@@ -124,7 +124,7 @@ export default function SignIn() {
                             <Switch id="remember-me" />
                             <label htmlFor="remember-me" className="font-inter text-sm">Remember me</label>
                         </div>
-                        <Link href="" className="font-inter text-[#235789] text-sm">Forgot password?</Link>
+                        <Link href="/forget-password" className="font-inter text-[#235789] text-sm">Forgot password?</Link>
                     </div>
 
                     <div className="w-full mt-8">
@@ -149,7 +149,7 @@ export default function SignIn() {
 
                     <div className="flex items-center justify-center gap-2 text-sm mt-6">
                         <p className="text-[#000000] font-inter">Don’t have an account?</p>
-                        <Link href="" className="text-blue-700 font-inter font-sm">
+                        <Link href="/" className="text-blue-700 font-inter font-sm">
                             Sign up now</Link>
                     </div>
                 </form>

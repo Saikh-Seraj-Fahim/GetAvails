@@ -1,7 +1,7 @@
 export default function ContactUsForm() {
     return (
-        <div className="mt-16 p-8 shadow-2xl z-30">
-            <form>
+        <div className="mt-16 flex flex-col items-center justify-center">
+            <form className="max-w-sm md:max-w-md rounded-2xl shadow-2xl z-40 p-6">
                 <h1 className="font-semibold font-inter text-[#235789] text-3xl">My role is:</h1>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                     <button className="px-4 py-1 text-[#235789] font-normal border border-[#235789] rounded-4xl

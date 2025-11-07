@@ -30,10 +30,65 @@
 
 
 
-
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
+import Modal from '@/components/ui/modal';
+import { Input } from '@/components/ui/input';
+import { Textarea } from "@/components/ui/textarea"
+import { useDropzone } from 'react-dropzone';
+
+
+// Accepting specific file types-React DropZone
+
+function Accept(props) {
+    const {
+        acceptedFiles,
+        fileRejections,
+        getRootProps,
+        getInputProps
+    } = useDropzone({
+        accept: {
+            'image/jpeg': [],
+            'image/png': []
+        }
+    });
+
+    const acceptedFileItems = acceptedFiles.map(file => (
+        <li key={file.path}>
+            {file.path} - {file.size} bytes
+        </li>
+    ));
+
+    const fileRejectionItems = fileRejections.map(({ file, errors }) => (
+        <li key={file.path}>
+            {file.path} - {file.size} bytes
+            <ul>
+                {errors.map(e => (
+                    <li key={e.code}>{e.message}</li>
+                ))}
+            </ul>
+        </li>
+    ));
+
+    return (
+        <section className="container px-3 py-2">
+            <div {...getRootProps({ className: 'dropzone' })}>
+                <input {...getInputProps()} />
+                <p>Supported format: JPG, PNG, JPEG ( Mobile phone photos )</p>
+                <em>(Only *.jpeg and *.png images will be accepted)</em>
+            </div>
+            <aside>
+                <h4>Accepted files</h4>
+                <ul>{acceptedFileItems}</ul>
+                {/* <h4>Rejected files</h4>
+        <ul>{fileRejectionItems}</ul> */}
+            </aside>
+        </section>
+    );
+}
 
 export default function BlogsHero() {
     const featuredBlogs = [
@@ -93,7 +148,7 @@ export default function BlogsHero() {
             image: '/blogs/latest-blog-3.png'
         },
         {
-            id: 1,
+            id: 4,
             category: 'Artists',
             categoryColor: 'text-blue-600',
             title: 'Behind the Stage Lights',
@@ -103,7 +158,7 @@ export default function BlogsHero() {
             image: '/blogs/latest-blog-1.jpg'
         },
         {
-            id: 2,
+            id: 5,
             category: 'Agent',
             categoryColor: 'text-blue-600',
             title: 'Behind the Stage Lights',
@@ -114,7 +169,7 @@ export default function BlogsHero() {
             image: '/blogs/latest-blog-2.jpg'
         },
         {
-            id: 3,
+            id: 6,
             category: 'Manager',
             categoryColor: 'text-blue-600',
             title: 'Behind the Stage Lights',
@@ -124,7 +179,7 @@ export default function BlogsHero() {
             image: '/blogs/latest-blog-3.png'
         },
         {
-            id: 1,
+            id: 7,
             category: 'Artists',
             categoryColor: 'text-blue-600',
             title: 'Behind the Stage Lights',
@@ -134,7 +189,7 @@ export default function BlogsHero() {
             image: '/blogs/latest-blog-1.jpg'
         },
         {
-            id: 2,
+            id: 8,
             category: 'Agent',
             categoryColor: 'text-blue-600',
             title: 'Behind the Stage Lights',
@@ -145,7 +200,7 @@ export default function BlogsHero() {
             image: '/blogs/latest-blog-2.jpg'
         },
         {
-            id: 3,
+            id: 9,
             category: 'Manager',
             categoryColor: 'text-blue-600',
             title: 'Behind the Stage Lights',
@@ -155,6 +210,8 @@ export default function BlogsHero() {
             image: '/blogs/latest-blog-3.png'
         }
     ];
+
+    const [modalOpen, setModalOpen] = useState(false);
 
     return (
         <div>
@@ -169,7 +226,7 @@ export default function BlogsHero() {
                         Exploring trends, challenges and opportunities that shape partnerships, platforms and communities.
                     </p>
                     <button className="px-6 py-2 bg-white text-gray-900 font-semibold font-inter rounded-lg 
-                    hover:bg-gray-100 transition-colors mt-2 cursor-pointer">
+                    hover:bg-gray-100 transition-colors mt-2 cursor-pointer" onClick={() => setModalOpen(true)}>
                         Share your Blog
                     </button>
                 </div>
@@ -244,6 +301,45 @@ export default function BlogsHero() {
                     </div>
                 ))}
             </div>
+
+            {modalOpen && (
+                <Modal
+                    isOpen={modalOpen}
+                    onClose={() => setModalOpen(false)}
+                    animation="bounce"
+                    size="lg"
+                >
+                    <form className="flex flex-col items-center justify-center">
+                        <h1 className='font-inter font-medium md:font-semibold text-xl md:text-2xl'>Add New Blog</h1>
+
+                        <div className="w-full grid gap-3 items-center mt-6 mx-8">
+                            <label htmlFor="blogTitle" className="font-medium font-inter">Blog Title</label>
+                            <Input type="text" id="blogTitle" placeholder="Enter blog title"
+                                className="font-inter bg-[#F2F2F2] text-black" />
+                            {/* {errors.emailAddress && (
+                            <p className="text-red-500 text-sm font-poppins">{errors.emailAddress.message}</p>
+                        )} */}
+                        </div>
+
+                        <div className="w-full grid gap-3 items-center mt-6 mx-8">
+                            <label htmlFor="blogDetails" className="font-medium font-inter">Blog Details</label>
+                            <Textarea id="blogDetails" placeholder="Enter blog title"
+                                className="font-inter bg-[#F2F2F2] text-black" />
+                            {/* {errors.emailAddress && (
+                            <p className="text-red-500 text-sm font-poppins">{errors.emailAddress.message}</p>
+                        )} */}
+                        </div>
+
+                        <div className='mt-12 mx-2 border-4 border-dashed'>
+                            <Accept />
+                        </div>
+
+                        <button className="mt-8 px-8 py-1 font-inter bg-[#235789] text-white rounded-4xl cursor-pointer">
+                            Submit
+                        </button>
+                    </form>
+                </Modal>
+            )}
         </div>
     );
 };

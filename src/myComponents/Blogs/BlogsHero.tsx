@@ -44,12 +44,7 @@ import { useDropzone } from 'react-dropzone';
 // Accepting specific file types-React DropZone
 
 function Accept(props) {
-    const {
-        acceptedFiles,
-        fileRejections,
-        getRootProps,
-        getInputProps
-    } = useDropzone({
+    const { acceptedFiles, fileRejections, getRootProps, getInputProps } = useDropzone({
         accept: {
             'image/jpeg': [],
             'image/png': []
@@ -62,16 +57,16 @@ function Accept(props) {
         </li>
     ));
 
-    const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-        <li key={file.path}>
-            {file.path} - {file.size} bytes
-            <ul>
-                {errors.map(e => (
-                    <li key={e.code}>{e.message}</li>
-                ))}
-            </ul>
-        </li>
-    ));
+    // const fileRejectionItems = fileRejections.map(({ file, errors }) => (
+    //     <li key={file.path}>
+    //         {file.path} - {file.size} bytes
+    //         <ul>
+    //             {errors.map(e => (
+    //                 <li key={e.code}>{e.message}</li>
+    //             ))}
+    //         </ul>
+    //     </li>
+    // ));
 
     return (
         <section className="container px-3 py-2">

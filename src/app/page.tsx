@@ -10,7 +10,7 @@ export default function SignUp() {
     <div className="w-full h-screen flex">
       {/* Left Image Section */}
       <div className="hidden lg:block lg:w-[50%] xl:w-[60%] 2xl:w-[70%] h-full relative">
-        <Image src="/stage.png" alt="background" fill className="object-cover object-center" />
+        <Image src="/sign-up-images/stage.png" alt="background" fill className="object-cover object-center" />
       </div>
 
       {/* Right Section */}
@@ -36,10 +36,10 @@ export default function SignUp() {
                     height={20}
                     width={20}
                   />
-                  <span className="font-inter text-[#235789] text-xl">Agents</span>
+                  <p className="font-inter text-[#235789] text-xl">Agents</p>
                 </div>
                 {/* The arrow icon will automatically appear here on the right
-                                because of `justify-between` */}
+                because of `justify-between` */}
               </AccordionTrigger>
               <AccordionContent className="font-inter text-[#6B7280] space-y-4">
                 <p>
@@ -48,7 +48,7 @@ export default function SignUp() {
                 </p>
                 <Link href="/sign-up-agent">
                   <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
-                                cursor-pointer font-inter">
+                  cursor-pointer font-inter">
                     Join as Agent
                   </button>
                 </Link>
@@ -65,10 +65,10 @@ export default function SignUp() {
                     height={20}
                     width={20}
                   />
-                  <span className="font-inter text-[#235789] text-xl">Venues</span>
+                  <p className="font-inter text-[#235789] text-xl">Venues</p>
                 </div>
                 {/* The arrow icon will automatically appear here on the right
-                                because of `justify-between` */}
+                because of `justify-between` */}
               </AccordionTrigger>
               <AccordionContent className="font-inter text-[#6B7280] space-y-4">
                 <p>
@@ -77,7 +77,7 @@ export default function SignUp() {
                 </p>
                 <Link href="sign-up-venue">
                   <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
-                                cursor-pointer font-inter">
+                  cursor-pointer font-inter">
                     Join as Venues
                   </button>
                 </Link>
@@ -89,10 +89,10 @@ export default function SignUp() {
                 {/* Left side (icon + label) */}
                 <div className="flex items-center gap-2">
                   <AiFillAudio className="w-7 h-7" />
-                  <span className="font-inter text-[#235789] text-xl">Artists</span>
+                  <p className="font-inter text-[#235789] text-xl">Artists</p>
                 </div>
                 {/* The arrow icon will automatically appear here on the right
-                                because of `justify-between` */}
+                because of `justify-between` */}
               </AccordionTrigger>
               <AccordionContent className="font-inter text-[#6B7280] space-y-4">
                 <p>
@@ -101,7 +101,7 @@ export default function SignUp() {
                 </p>
                 <Link href="sign-up-artist">
                   <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
-                                cursor-pointer font-inter">
+                  cursor-pointer font-inter">
                     Join as Artists
                   </button>
                 </Link>
@@ -113,10 +113,10 @@ export default function SignUp() {
                 {/* Left side (icon + label) */}
                 <div className="flex items-center gap-2">
                   <FaHandshake className="w-7 h-7" />
-                  <span className="font-inter text-[#235789] text-xl">Buyer</span>
+                  <p className="font-inter text-[#235789] text-xl">Buyer</p>
                 </div>
                 {/* The arrow icon will automatically appear here on the right
-                                because of `justify-between` */}
+                because of `justify-between` */}
               </AccordionTrigger>
               <AccordionContent className="font-inter text-[#6B7280] space-y-4">
                 <p>
@@ -125,7 +125,7 @@ export default function SignUp() {
                 </p>
                 <Link href="sign-up-buyer">
                   <button className="px-4 py-2 text-[#235789] font-normal border border-[#235789] rounded-4xl
-                                cursor-pointer font-inter">
+                  cursor-pointer font-inter">
                     Join as Buyer
                   </button>
                 </Link>

@@ -44,11 +44,11 @@ const locations: Location[] = [
 ];
 
 export default function HomePageHero() {
-    // ✏️ CHANGED: Added type annotations to state
+    // Added type annotations to state
     const [isOpenArtist, setIsOpenArtist] = useState<boolean>(false);
     const [searchArtist, setSearchArtist] = useState<string>('');
     const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
-    // ✏️ CHANGED: Added type to userefArtist
+    // Added type to userefArtist
     const refArtist = useRef<HTMLDivElement>(null);
 
     const filteredArtists = artists.filter(a =>
@@ -56,7 +56,7 @@ export default function HomePageHero() {
     );
 
     useEffect(() => {
-        // ✏️ CHANGED: Added type to event parameter
+        // Added type to event parameter
         // e contains info about where user clicked. e.target = the element user clicked on.
         const handleClickArtist = (e: MouseEvent) => {
             if (refArtist.current && !refArtist.current.contains(e.target as Node)) {
@@ -68,11 +68,11 @@ export default function HomePageHero() {
     }, []);
 
 
-    // ✏️ CHANGED: Added type annotations to state
+    // Added type annotations to state
     const [isOpenLocation, setIsOpenLocation] = useState<boolean>(false);
     const [searchLocation, setSearchLocation] = useState<string>('');
     const [selectedLocation, setSelectedLocation] = useState<Artist | null>(null);
-    // ✏️ CHANGED: Added type to userefArtist
+    // Added type to userefArtist
 
     const refLocation = useRef<HTMLDivElement>(null);
 
@@ -81,7 +81,7 @@ export default function HomePageHero() {
     );
 
     useEffect(() => {
-        // ✏️ CHANGED: Added type to event parameter
+        // Added type to event parameter
         const handleClickLocation = (e: MouseEvent) => {
             if (refLocation.current && !refLocation.current.contains(e.target as Node)) setIsOpenLocation(false);
         };
